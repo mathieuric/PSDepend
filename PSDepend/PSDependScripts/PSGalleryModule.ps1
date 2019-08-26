@@ -240,7 +240,11 @@ if($Existing)
         }
         return $null
     }
-    Write-Verbose "Continuing to install [$Name]: Requested version [$version], existing version [$ExistingVersion]"
+    else {
+        Write-Verbose "Installing [$Name]: Requested version [$version], Gallery version [$GalleryVersion], existing version [$ExistingVersion]"
+        $PSDependAction += 'Install'
+    }
+    
 }
 
 #No dependency found, return false if we're testing alone...
